@@ -1,3 +1,8 @@
+# Unnamed files
+*
+!*/
+!*.*
+
 # Prerequisites
 *.d
 
@@ -30,8 +35,3 @@
 *.exe
 *.out
 *.app
-
-# Unnamed files
-*
-!*/
-!*.*
