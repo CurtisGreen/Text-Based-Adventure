@@ -9,10 +9,15 @@
 
 
 Map:: Map(){
-    mhealth.resize(10);
+	
+	// Start in the middle of the 3x3 square
     cur_x = 1;
     cur_y = 1;
     
+	// Set monster health based on difficulty
+	// TODO terribly confusing way of setting monster stats
+	// Should change it
+	mhealth.resize(10);
     for (int i = 30; i > 5; i -= 5)
         mhealth[6 - (i/5)] = i;
     
@@ -20,9 +25,13 @@ Map:: Map(){
         if (mhealth[i] <= 0)
             mhealth[i] = -1;
     
+	
+	// Setup 3x3 grid
+	// TODO make more readible
+	// Or change to be cleaner/more efficient
     int z = 1;
     std::vector <int> temp;
-    
+	
     for(int i = 0; i < 3; i++){
 		for(int j = z; j < z+3; j++){
 		    temp.push_back(j);
@@ -33,7 +42,8 @@ Map:: Map(){
 	}
         
     SetField();
-    //FieldInfo();
+	// TODO currently this function creates a new map instead of taking one as an argument so the output is worthless
+    //FieldInfo(); 
 }
 
 //Moving 
@@ -68,6 +78,8 @@ void Map:: Move(std::string dir){///////////////////////////////////////////////
     //std::cout << "You are currently at " << cur_x << ", " << cur_y <<  " and the area type is " << field[cur_x][cur_y] << std::endl; //Bugtesting
 }
 
+// Not currently used
+// TODO make and use or delete
 void Map:: DispInfo(int i){         // Prints the scenario based on an int
     switch(i){
         case 1:
@@ -83,7 +95,8 @@ void Map:: DispInfo(int i){         // Prints the scenario based on an int
     }
 }
 
-//Creates field
+// Creates field
+// TODO use more understandable variables than just letters
 void Map:: SetField(){    // Sets the scenario based on random 1-9
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
@@ -101,7 +114,6 @@ std::vector <std::vector <int>> Map:: GetField(){     // Returns the 2D vector f
 }
 
 //Shows field table 
-//Problems because the map in adventure.h != the one constructed here
 void Map:: FieldInfo(){
     std::cout << "\nField Info:" << std::endl;
     for (int i = 0; i < 3; i++){
