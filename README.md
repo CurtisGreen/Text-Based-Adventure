@@ -17,3 +17,4 @@ Move around a 3x3 grid interacting with monsters in various ways to increase sta
 
 ### Known bugs
  * Inventory does not work properly
+ * Debug function FieldInfo() should take in adventure class as an argument rather than creating a new one
